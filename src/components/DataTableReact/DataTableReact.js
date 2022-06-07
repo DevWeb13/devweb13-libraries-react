@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './dataTableReact.css';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 
 import updateResult from './updateResult';
 import * as utils from './utils';
@@ -31,9 +30,9 @@ export function DataTableReact({ employees }) {
    */
   function showIconFaSort(direction) {
     if (direction === 'asc') {
-      return <AiFillCaretDown className="icon" />;
+      return <i className="fas fa-sort-up" aria-hidden="true" />;
     }
-    return <AiFillCaretUp className="icon" />;
+    return <i className="fas fa-sort-down" aria-hidden="true" />;
   }
 
   useEffect(() => {
