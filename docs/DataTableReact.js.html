@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: DataTableReact.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: DataTableReact.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react';
+import './dataTableReact.css';
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
+
+import updateResult from './updateResult';
+import * as utils from './utils';
+
+/**
+ *
+ * @param {object} props - props
+ * @param {array} props.employees - array of employees
+ * @param {object} props.employees[] - object of employee
+ * @component
+ */
+export function DataTableReact({ employees }) {
+  const [data, setData] = useState({
+    selectValue: 10,
+    searchValue: '',
+    filteredData: [],
+    indexOfPages: 1,
+    order: 'asc',
+    column:
+      employees &amp;&amp; employees.length !== 0 ? Object.keys(employees[0])[1] : '',
+    employeesToRender: [],
+  });
+
+  /**
+   * If the direction is 'asc' then return the up arrow, otherwise return the down arrow
+   * @param {string} direction  Direction to sort
+   * @returns an icon based on the direction of the sort.
+   */
+  function showIconFaSort(direction) {
+    if (direction === 'asc') {
+      return &lt;AiFillCaretDown className="icon" />;
+    }
+    return &lt;AiFillCaretUp className="icon" />;
+  }
+
+  useEffect(() => {
+    setData({
+      ...data,
+      filteredData: updateResult(
+        employees,
+        data.selectValue,
+        data.searchValue,
+        data.indexOfPages,
+        data.order,
+        data.column,
+      )[1],
+      employeesToRender: updateResult(
+        employees,
+        data.selectValue,
+        data.searchValue,
+        data.indexOfPages,
+        data.order,
+        data.column,
+      )[0],
+    });
+  }, [
+    employees,
+    data.selectValue,
+    data.searchValue,
+    data.indexOfPages,
+    data.order,
+    data.column,
+  ]);
+
+  return employees &amp;&amp; employees.length !== 0 ? (
+    &lt;div id="employee-div" className="appContainer">
+      &lt;div id="employee-table_wrapper" className="dataTablesWrapper no-footer">
+        &lt;div className="dataTables_length" id="employee-table_length">
+          &lt;label htmlFor="selectButton">
+            Show{' '}
+            &lt;select
+              name="employee-table_length"
+              aria-controls="employee-table"
+              id="selectButton"
+              value={data.selectValue}
+              onChange={(e) => utils.handleSelect(e, data, setData)}
+            >
+              &lt;option value={10}>10&lt;/option>
+              &lt;option value={25}>25&lt;/option>
+              &lt;option value={50}>50&lt;/option>
+              &lt;option value={100}>100&lt;/option>
+            &lt;/select>{' '}
+            entries
+          &lt;/label>
+        &lt;/div>
+        &lt;div id="employee-table_filter" className="dataTables_filter">
+          &lt;label htmlFor="searchInput">
+            Search:{' '}
+            &lt;input
+              type="search"
+              id="searchInput"
+              value={data.searchValue}
+              onChange={(e) => utils.handleSearch(e, data, setData)}
+            />
+          &lt;/label>
+        &lt;/div>
+      &lt;/div>
+      &lt;table
+        id="employee-table"
+        className="display dataTable no-footer"
+        role="grid"
+        aria-describedby="employee-table_info"
+      >
+        &lt;thead>
+          &lt;tr role="row">
+            {Object.keys(employees[0]).map(
+              (key) =>
+                key !== 'id' &amp;&amp; (
+                  &lt;th
+                    key={key}
+                    className={key}
+                    tabIndex={0}
+                    aria-controls="employee-table"
+                    rowSpan={1}
+                    colSpan={1}
+                    onClick={(e) => utils.switchOrder(e, data, setData)}
+                    aria-sort={
+                      data.column === key ? utils.ariaManager(data.order) : null
+                    }
+                    aria-label={`${key}: activate to sort column ${
+                      data.order === 'asc' ? 'descending' : 'ascending'
+                    }`}
+                  >
+                    {key}
+                    {data.column === key ? showIconFaSort(data.order) : null}
+                  &lt;/th>
+                ),
+            )}
+          &lt;/tr>
+        &lt;/thead>
+        &lt;tbody>
+          {data.employeesToRender.map((employee, index) => (
+            &lt;tr
+              role="row"
+              key={employee.id}
+              className={utils.trClassManager(index)}
+            >
+              {Object.keys(employees[0]).map(
+                (key) =>
+                  key !== 'id' &amp;&amp; (
+                    &lt;td
+                      key={key}
+                      className={utils.tdClassManager(index, data.column, key)}
+                      aria-controls="employee-table"
+                      rowSpan={1}
+                      colSpan={1}
+                      aria-sort={
+                        data.column === key
+                          ? utils.ariaManager(data.order)
+                          : null
+                      }
+                      aria-label={
+                        data.column === key
+                          ? `${key}: ${utils.ariaManager(data.order)}`
+                          : key
+                      }
+                    >
+                      {employee[key]}
+                    &lt;/td>
+                  ),
+              )}
+            &lt;/tr>
+          ))}
+        &lt;/tbody>
+      &lt;/table>
+      &lt;div className="dataTablesWrapper">
+        &lt;div
+          className="dataTables_info"
+          id="employee-table_info"
+          role="status"
+          aria-live="polite"
+        >
+          Showing{' '}
+          {data.employeesToRender.indexOf(data.employeesToRender[0]) +
+            1 +
+            data.selectValue * (data.indexOfPages - 1)}{' '}
+          to{' '}
+          {data.filteredData.length &lt; data.selectValue
+            ? data.employeesToRender.length
+            : data.employeesToRender.length +
+              data.selectValue * (data.indexOfPages - 1)}{' '}
+          of {data.filteredData.length} entries
+        &lt;/div>
+        &lt;div className="dataTables_paginate" id="employee-table_paginate">
+          {data.indexOfPages > 1 &amp;&amp; (
+            &lt;button
+              type="button"
+              className="paginate_button previous"
+              aria-controls="employee-table"
+              tabIndex={-1}
+              id="employee-table_previous"
+              onClick={() => utils.previousPage(data, setData)}
+            >
+              Previous
+            &lt;/button>
+          )}
+
+          &lt;div className="paginate_button current">{data.indexOfPages}&lt;/div>
+          {data.indexOfPages &lt; data.filteredData.length / data.selectValue &amp;&amp; (
+            &lt;button
+              type="button"
+              className="paginate_button next"
+              aria-controls="employee-table"
+              tabIndex={-1}
+              id="employee-table_next"
+              onClick={() => utils.nextPage(data, setData)}
+            >
+              Next
+            &lt;/button>
+          )}
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  ) : (
+    &lt;div id="employee-div" className="appContainer">
+      &lt;h2>No data available in table&lt;/h2>
+    &lt;/div>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ariaManager">ariaManager</a></li><li><a href="global.html#columnChooseAndSort">columnChooseAndSort</a></li><li><a href="global.html#DataTableReact">DataTableReact</a></li><li><a href="global.html#paginateData">paginateData</a></li><li><a href="global.html#search">search</a></li><li><a href="global.html#tdClassManager">tdClassManager</a></li><li><a href="global.html#updateResult">updateResult</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jun 07 2022 16:37:15 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
