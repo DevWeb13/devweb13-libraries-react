@@ -37,7 +37,6 @@ function columnChooseAndSort(data, type, meaning) {
       if (typeof a[type] === 'string') {
         return a[type].localeCompare(b[type]);
       }
-      console.log(a[type], b[type]);
       return a[type] - b[type];
     });
   } else {

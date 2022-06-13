@@ -107,6 +107,7 @@ export function DataTableReact({ employees }) {
           <tr role="row">
             {Object.keys(employees[0]).map(
               (key) =>
+                key[0] !== '_' &&
                 key !== 'id' && (
                   <th
                     key={key}
@@ -117,7 +118,9 @@ export function DataTableReact({ employees }) {
                     colSpan={1}
                     onClick={(e) => utils.switchOrder(e, data, setData)}
                     aria-sort={
-                      data.column === key ? utils.ariaManager(data.order) : null
+                      data.column === key
+                        ? utils.ariaManager(data.order)
+                        : 'none'
                     }
                     aria-label={`${key}: activate to sort column ${
                       data.order === 'asc' ? 'descending' : 'ascending'
@@ -139,6 +142,7 @@ export function DataTableReact({ employees }) {
             >
               {Object.keys(employees[0]).map(
                 (key) =>
+                  key[0] !== '_' &&
                   key !== 'id' && (
                     <td
                       key={key}
@@ -149,7 +153,7 @@ export function DataTableReact({ employees }) {
                       aria-sort={
                         data.column === key
                           ? utils.ariaManager(data.order)
-                          : null
+                          : 'none'
                       }
                       aria-label={
                         data.column === key
