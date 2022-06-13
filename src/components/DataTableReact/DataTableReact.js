@@ -136,7 +136,7 @@ export function DataTableReact({ employees }) {
           {data.employeesToRender.map((employee, index) => (
             <tr
               role="row"
-              // key={employee.id}
+              key={employee.id}
               className={utils.trClassManager(index)}
             >
               {Object.keys(employees[0]).map(
