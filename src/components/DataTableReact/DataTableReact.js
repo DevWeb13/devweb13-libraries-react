@@ -107,8 +107,7 @@ export function DataTableReact({ employees }) {
           <tr role="row">
             {Object.keys(employees[0]).map(
               (key) =>
-                key[0] !== '_' &&
-                key !== 'id' && (
+                key[0] !== '_' && (
                   <th
                     key={key}
                     className={key}
@@ -137,13 +136,12 @@ export function DataTableReact({ employees }) {
           {data.employeesToRender.map((employee, index) => (
             <tr
               role="row"
-              key={employee.id}
+              // key={employee.id}
               className={utils.trClassManager(index)}
             >
               {Object.keys(employees[0]).map(
                 (key) =>
-                  key[0] !== '_' &&
-                  key !== 'id' && (
+                  key[0] !== '_' && (
                     <td
                       key={key}
                       className={utils.tdClassManager(index, data.column, key)}
