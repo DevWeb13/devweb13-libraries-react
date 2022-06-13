@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './dataTableReact.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 import updateResult from './updateResult';
 import * as utils from './utils';
 
@@ -30,9 +31,9 @@ export function DataTableReact({ employees }) {
    */
   function showIconFaSort(direction) {
     if (direction === 'asc') {
-      return <i className="fas fa-sort-up" aria-hidden="true" />;
+      return <FontAwesomeIcon icon={faSortDown} />;
     }
-    return <i className="fas fa-sort-down" aria-hidden="true" />;
+    return <FontAwesomeIcon icon={faSortUp} />;
   }
 
   useEffect(() => {

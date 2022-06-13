@@ -1,6 +1,6 @@
 {
   "name": "devweb13-libraries-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -14,14 +14,16 @@
   "author": "DevWeb13",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@storybook/react": "^6.5.7",
-    "jsdoc": "^3.6.10",
-    "prop-types": "^15.8.1",
-    "react-icons": "^4.4.0"
+    "jsdoc": "^3.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
+    "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@storybook/addon-actions": "^6.5.7",
     "@storybook/addon-essentials": "^6.5.7",
