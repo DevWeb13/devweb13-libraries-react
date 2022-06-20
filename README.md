@@ -143,7 +143,7 @@ function App() {
 
 ## Result
 
-![App Screenshot](src/components/DataTableReact/img/Capture d’écran de 2022-06-20 14-34-23.png)
+![App Screenshot](https://github.com/DevWeb13/devweb13-libraries-react/blob/master/src/components/DataTableReact/img/Capture%20d%E2%80%99%C3%A9cran%20de%202022-06-20%2014-34-23.png)
 
 ## Documentation
 
