@@ -17,6 +17,7 @@ Library of different useful React components
 ![NODE](https://img.shields.io/badge/Node-v16.13.0-ff69b4)
 ![@storybook/react](https://img.shields.io/badge/Library-@storybook/react-blueviolet)
 ![JsDoc](https://img.shields.io/badge/Library-JsDoc-blueviolet)
+![rollup](https://img.shields.io/badge/Library-rollup-blueviolet)
 
 ## Deployment
 
