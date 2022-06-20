@@ -42,6 +42,184 @@
 
 
 
+    <section>
+        <article><h1>devweb13-libraries-react</h1>
+<p>Library of different useful React components:</p>
+<ul>
+<li>DataTableReact: A flexible, dynamic and easy-to-use table to search and sort this data.</li>
+</ul>
+<h2>Made with</h2>
+<p><img src="https://img.shields.io/badge/Language-JS-yellow" alt="JavaScript">
+<img src="https://img.shields.io/badge/Style-CSS-ff69b4" alt="CSS">
+<img src="https://img.shields.io/badge/Deploy-npm-black" alt="npm">
+<img src="https://img.shields.io/badge/Library-fontawesome-blueviolet" alt="fontawesome">
+<img src="https://img.shields.io/badge/IDE-VsCode-blue" alt="IDE">
+<img src="https://img.shields.io/badge/Node-v16.13.0-ff69b4" alt="NODE">
+<img src="https://img.shields.io/badge/Library-@storybook/react-blueviolet" alt="@storybook/react">
+<img src="https://img.shields.io/badge/Library-JsDoc-blueviolet" alt="JsDoc">
+<img src="https://img.shields.io/badge/Library-RollUp-blueviolet" alt="RollUp"></p>
+<h2>Measures SonarCloud</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">summary</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=ncloc" alt="Lines of Code"></a></td>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=sqale_rating" alt="Maintainability Rating"></a></td>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=code_smells" alt="Code Smells"></a></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=duplicated_lines_density" alt="Duplicated Lines (%)"></a></td>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=reliability_rating" alt="Reliability Rating"></a></td>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=sqale_index" alt="Technical Debt"></a></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=bugs" alt="Bugs"></a></td>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=security_rating" alt="Security Rating"></a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/measure?project=DevWeb13_devweb13-libraries-react&amp;metric=vulnerabilities" alt="Vulnerabilities"></a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://sonarcloud.io/summary/new_code?id=DevWeb13_devweb13-libraries-react"><img src="https://sonarcloud.io/api/project_badges/quality_gate?project=DevWeb13_devweb13-libraries-react" alt="Quality gate"></a></p>
+<h2>Deployment</h2>
+<p>To deploy this project run</p>
+<pre class="prettyprint source lang-bash"><code>  npm i devweb13-libraries-react
+</code></pre>
+<h2>Run DataTableReact</h2>
+<p>After installing the library</p>
+<pre class="prettyprint source lang-js"><code>import { DataTableReact } from 'devweb13-libraries-react';
+</code></pre>
+<ul>
+<li>
+<p>The array takes a single required parameter, an array of objects with all the same properties. The first property will be the first column of the table and so on…</p>
+</li>
+<li>
+<p>The pagination of the table is managed automatically according to the number of entries displayed on the screen.</p>
+</li>
+<li>
+<p>Special feature!!: Properties starting with a &quot;_&quot; are not displayed on the screen.</p>
+</li>
+</ul>
+<h2>Usage/Examples</h2>
+<pre class="prettyprint source lang-javascript"><code>import { DataTableReact } from 'devweb13-libraries-react';
+
+function App() {
+  const arrayOfObjects = [
+    {
+      _id: 1,
+      id: 1,
+      name: 'John Doe',
+      age: '30',
+      salary: 20000,
+    },
+    {
+      _id: 2,
+      id: 2,
+      name: 'Jane Doe',
+      age: '25',
+      salary: 25000,
+    },
+    {
+      _id: 3,
+      id: 3,
+      name: 'Joe Doe',
+      age: '35',
+      salary: 30000,
+    },
+    {
+      _id: 4,
+      id: 4,
+      name: 'Jack Doe',
+      age: '40',
+      salary: 40000,
+    },
+    {
+      _id: 5,
+      id: 5,
+      name: 'Jill Doe',
+      age: '45',
+      salary: 50000,
+    },
+    {
+      _id: 6,
+      id: 6,
+      name: 'Juan Doe',
+      age: '50',
+      salary: 60000,
+    },
+    {
+      _id: 7,
+      id: 7,
+      name: 'Juan Doe',
+      age: '55',
+      salary: 70000,
+    },
+    {
+      _id: 8,
+      id: 8,
+      name: 'Juan Doe',
+      age: '60',
+      salary: 80000,
+    },
+    {
+      _id: 9,
+      id: 9,
+      name: 'Juan Doe',
+      age: '65',
+      salary: 90000,
+    },
+    {
+      _id: 10,
+      id: 10,
+      name: 'Juan Doe',
+      age: '70',
+      salary: 100000,
+    },
+    {
+      _id: 11,
+      id: 11,
+      name: 'Juan Doe',
+      age: '75',
+      salary: 110000,
+    },
+  ];
+  return;
+  &lt;div>
+    &lt;DataTableReact arrayOfObjects={arrayOfObjects} />
+  &lt;/div>;
+}
+</code></pre>
+<h2>Result</h2>
+<p><img src="https://github.com/DevWeb13/devweb13-libraries-react/blob/master/src/components/DataTableReact/img/Capture%20d%E2%80%99%C3%A9cran%20de%202022-06-20%2014-34-23.png" alt="App Screenshot"></p>
+<h2>Documentation</h2>
+<p><a href="https://devweb13.github.io/devweb13-libraries-react/">Documentation</a></p>
+<h1>Hi, I'm DevWeb13! 👋</h1>
+<h2>🚀 About Me</h2>
+<p>I'm a full stack developer...</p>
+<h2>🔗 Links</h2>
+<p><a href="https://www.linkedin.com/in/loic-g-76968b219/"><img src="https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="linkedin"></a>
+<a href="https://twitter.com/DeveloppementW1"><img src="https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&amp;logo=twitter&amp;logoColor=white" alt="twitter"></a>
+<a href="https://www.codingame.com/profile/4f9df2adc1f95abbab8380d47656ade10865463"><img src="https://img.shields.io/static/v1?style=for-the-badge&amp;message=CodinGame&amp;color=222222&amp;logo=CodinGame&amp;logoColor=F2BB13&amp;label=" alt="CodinGame"></a></p>
+<h2>🛠 Skills</h2>
+<p>Javascript, React, Sass...</p>
+<h2>License</h2>
+<p><a href="https://choosealicense.com/licenses/mit/">MIT</a></p>
+<h2>Authors</h2>
+<ul>
+<li><a href="https://github.com/DevWeb13">@DevWeb13</a></li>
+</ul></article>
+    </section>
+
 
 
 
@@ -56,7 +234,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jun 07 2022 16:37:15 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 20 2022 15:05:50 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
