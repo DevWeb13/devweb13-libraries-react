@@ -85,6 +85,6 @@ const employees = [
 
 const stories = storiesOf('App test', module);
 
-stories.add('App', () => {
+stories.add('DataTableReact', () => {
   return <DataTableReact employees={employees} />;
 });
